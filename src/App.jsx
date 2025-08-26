@@ -72,15 +72,30 @@ export default function App() {
   };
 
   const saveEdit = async (id) => {
-    await fetch(`${API_URL}/post/${id}`, {
+  try {
+    const response = await fetch(`${API_URL}/post/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user_id: user.id, description: editingText }),
     });
-    setEditingPostId(null);
-    setEditingText("");
-    loadPosts();
-  };
+    
+    if (response.ok) {
+      setPosts(posts.map(post => 
+        post.id === id ? { ...post, description: editingText } : post
+      ));
+      
+      setEditingPostId(null);
+      setEditingText("");
+      
+      setTimeout(() => {
+        loadPosts();
+      }, 100);
+    }
+  } catch (error) {
+    console.error("Erro ao editar post:", error);
+    alert("Erro ao editar post");
+  }
+};
 
   useEffect(() => {
     if (user) loadPosts();
