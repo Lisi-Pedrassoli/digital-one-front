@@ -88,7 +88,22 @@ const AuthPage = ({ onLogin, onRegister, onRecover }) => {
   }
 
   return (
-    <div style={{ padding: "20px" }}>
+     <div style={{ 
+      minHeight: "100vh",
+      background: "linear-gradient(135deg, #E3F2FD 0%, #FFF0F5 100%)",
+      padding: "20px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    }}>
+      <div style={{ 
+        backgroundColor: "white", 
+        padding: "40px", 
+        borderRadius: "15px", 
+        boxShadow: "0 8px 25px rgba(0,0,0,0.1)",
+        maxWidth: "400px",
+        width: "100%"
+      }}>
       <h2>{isLogin ? "Login" : "Registro"}</h2>
       
       {!isLogin && (
@@ -97,14 +112,13 @@ const AuthPage = ({ onLogin, onRegister, onRecover }) => {
           value={regName} 
           onChange={(e) => setRegName(e.target.value)} 
         />
+
       )}
-      
-      <input 
+       <input 
         placeholder="Email" 
         value={isLogin ? loginEmail : regEmail} 
         onChange={(e) => isLogin ? setLoginEmail(e.target.value) : setRegEmail(e.target.value)} 
       />
-      
       <input 
         type="password" 
         placeholder="Senha" 
@@ -112,18 +126,135 @@ const AuthPage = ({ onLogin, onRegister, onRecover }) => {
         onChange={(e) => isLogin ? setLoginPassword(e.target.value) : setRegPassword(e.target.value)} 
       />
       
-      {isLogin ? (
+
+       {isLogin ? (
         <>
-          <button onClick={handleLogin}>Login</button>
-          <button onClick={() => setIsLogin(false)}>Criar Conta</button>
-          <button onClick={() => setIsRecovering(true)}>Esqueci minha senha</button>
+
+        <button 
+        onClick={handleLogin}
+        style={{
+          padding: "12px 25px",
+          backgroundColor: "#0a6792ff", 
+          color: "white",
+          border: "none",
+          borderRadius: "8px",
+          cursor: "pointer",
+          fontWeight: "bold",
+          margin: "5px",
+          transition: "all 0.3s ease"
+        }}
+        onMouseOver={(e) => {
+          e.target.style.backgroundColor = "#2694ddff";
+          e.target.style.transform = "translateY(-2px)";
+        }}
+        onMouseOut={(e) => {
+          e.target.style.backgroundColor = "#2b8dbbff";
+          e.target.style.transform = "translateY(0)";
+        }}
+      > Login
+     </button> <br />
+
+          <button 
+      onClick={() => setIsLogin(false)}
+      style={{
+        padding: "10px 20px",
+        backgroundColor: "#AED6F1",
+        color: "#2C3E50",
+        border: "none",
+        borderRadius: "6px",
+        cursor: "pointer",
+        margin: "5px",
+        transition: "all 0.3s ease"
+      }}
+      onMouseOver={(e) => {
+        e.target.style.backgroundColor = "#85C1E9";
+        e.target.style.transform = "translateY(-2px)";
+      }}
+      onMouseOut={(e) => {
+        e.target.style.backgroundColor = "#AED6F1";
+        e.target.style.transform = "translateY(0)";
+      }}
+    >
+      Criar Conta
+    </button>
+    <button 
+      onClick={() => setIsRecovering(true)}
+      style={{
+        padding: "10px 20px",
+        backgroundColor: "#D6EAF8", 
+        color: "#2874A6",
+        border: "none",
+        borderRadius: "6px",
+        cursor: "pointer",
+        margin: "5px",
+        transition: "all 0.3s ease"
+      }}
+      onMouseOver={(e) => {
+        e.target.style.backgroundColor = "#AED6F1";
+        e.target.style.transform = "translateY(-2px)";
+      }}
+      onMouseOut={(e) => {
+        e.target.style.backgroundColor = "#D6EAF8";
+        e.target.style.transform = "translateY(0)";
+      }}
+    >
+      Esqueci minha senha
+    </button>
+          
         </>
       ) : (
         <>
-          <button onClick={handleRegister}>Registrar</button>
-          <button onClick={() => setIsLogin(true)}>Já tenho conta</button>
+        <br />
+      <button 
+        onClick={handleRegister}
+        style={{
+          padding: "12px 25px",
+          backgroundColor: "#89CFF0",
+          color: "white",
+          border: "none",
+          borderRadius: "8px",
+          cursor: "pointer",
+          fontWeight: "bold",
+          margin: "5px",
+          transition: "all 0.3s ease"
+        }}
+        onMouseOver={(e) => {
+          e.target.style.backgroundColor = "#5DADE2";
+          e.target.style.transform = "translateY(-2px)";
+        }}
+        onMouseOut={(e) => {
+          e.target.style.backgroundColor = "#89CFF0";
+          e.target.style.transform = "translateY(0)";
+        }}
+      >
+        Registrar
+      </button>
+     <button 
+      onClick={() => setIsLogin(true)}
+      style={{
+        padding: "10px 20px",
+        backgroundColor: "#AED6F1", // Azul BB mais claro
+        color: "#2C3E50",
+        border: "none",
+        borderRadius: "6px",
+        cursor: "pointer",
+        margin: "5px",
+        transition: "all 0.3s ease"
+      }}
+      onMouseOver={(e) => {
+        e.target.style.backgroundColor = "#85C1E9";
+        e.target.style.transform = "translateY(-2px)";
+      }}
+      onMouseOut={(e) => {
+        e.target.style.backgroundColor = "#AED6F1";
+        e.target.style.transform = "translateY(0)";
+      }}
+    >
+      Já tenho conta
+    </button>
         </>
       )}
+     </div>
     </div>
   );
 };
@@ -161,9 +292,30 @@ const ProfilePage = ({ user, onUpdate, onLogout }) => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Meu Perfil</h2>
-      <button onClick={onLogout} style={{ marginBottom: "20px" }}>Logout</button>
+       <div style={{ 
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #E3F2FD 0%, #FFF0F5 100%)",
+        padding: "20px"
+      }}>
+        <h2>Meu Perfil</h2>
+        <button onClick={onLogout}style={{
+          padding: "10px 15px",
+          backgroundColor: "#FFEBEE", 
+          color: "#C62828",           
+          border: "1px solid #FFCDD2",
+          borderRadius: "6px",
+          cursor: "pointer"
+          }}
+          onMouseOver={(e) => {
+            e.target.style.backgroundColor = "#FFCDD2";
+            e.target.style.transform = "translateY(-2px)";
+            e.target.style.boxShadow = "0 4px 8px rgba(244, 67, 54, 0.3)";
+          }}
+          onMouseOut={(e) => {
+            e.target.style.backgroundColor = "#FFEBEE";
+            e.target.style.transform = "translateY(0)";
+            e.target.style.boxShadow = "none";
+        }}>Logout</button>
       
       <div style={{ marginBottom: "20px" }}>
         <h3>Alterar Nome</h3>
@@ -172,7 +324,24 @@ const ProfilePage = ({ user, onUpdate, onLogout }) => {
           value={newName} 
           onChange={(e) => setNewName(e.target.value)} 
         />
-        <button onClick={handleUpdateName}>Atualizar Nome</button>
+        <button onClick={handleUpdateName}style={{
+          padding: "10px 15px",
+          backgroundColor: "#E8F5E9", 
+          color: "#2E7D32",           
+          border: "1px solid #C8E6C9",
+          borderRadius: "6px",
+          cursor: "pointer"
+          }}
+            onMouseOver={(e) => {
+              e.target.style.backgroundColor = "#C8E6C9";
+              e.target.style.transform = "translateY(-2px)";
+              e.target.style.boxShadow = "0 4px 8px rgba(76, 175, 80, 0.3)";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.backgroundColor = "#E8F5E9";
+              e.target.style.transform = "translateY(0)";
+              e.target.style.boxShadow = "none";
+          }}>Atualizar Nome</button>
       </div>
 
       <div>
@@ -189,7 +358,25 @@ const ProfilePage = ({ user, onUpdate, onLogout }) => {
           value={newPassword} 
           onChange={(e) => setNewPassword(e.target.value)} 
         />
-        <button onClick={handleUpdatePassword}>Atualizar Senha</button>
+        <button onClick={handleUpdatePassword}style={{
+          padding: "10px 15px",
+          backgroundColor: "#1976D2",
+          color: "white",             
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+          fontWeight: "bold"
+          }}
+          onMouseOver={(e) => {
+            e.target.style.backgroundColor = "#1565C0";
+            e.target.style.transform = "translateY(-2px)";
+            e.target.style.boxShadow = "0 6px 12px rgba(25, 118, 210, 0.4)";
+          }}
+          onMouseOut={(e) => {
+            e.target.style.backgroundColor = "#1976D2";
+            e.target.style.transform = "translateY(0)";
+            e.target.style.boxShadow = "none";
+        }}>Atualizar Senha</button>
       </div>
     </div>
   );
@@ -221,10 +408,34 @@ const FeedPage = ({ user, posts, onCreatePost, onEditPost, onDeletePost, onNavig
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ 
+      padding: "20px", 
+      background: "linear-gradient(135deg, #E3F2FD 0%, #FFF0F5 100%)",
+      minHeight: "100vh"
+    }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
         <h2>Bem-vindo, {user.name || user.email}</h2>
-        <button onClick={onNavigateToProfile}>Meu Perfil</button>
+        <button onClick={onNavigateToProfile}
+         style={{
+          padding: "10px 20px",
+          backgroundColor: "#C1E1C1", 
+          color: "#2D5016",           
+          border: "none",
+          borderRadius: "8px",
+          cursor: "pointer",
+          fontWeight: "bold",
+          transition: "all 0.3s ease"
+        }}
+        onMouseOver={(e) => {
+          e.target.style.backgroundColor = "#A5D6A7"; 
+          e.target.style.transform = "translateY(-2px)";
+          e.target.style.boxShadow = "0 4px 8px rgba(76, 175, 80, 0.3)";
+        }}
+        onMouseOut={(e) => {
+          e.target.style.backgroundColor = "#C1E1C1";
+          e.target.style.transform = "translateY(0)";
+          e.target.style.boxShadow = "none";
+        }}>Meu Perfil</button>
       </div>
 
       <h3>Criar Post</h3>
@@ -233,19 +444,86 @@ const FeedPage = ({ user, posts, onCreatePost, onEditPost, onDeletePost, onNavig
         onChange={(e) => setNewPost(e.target.value)} 
         placeholder="O que você está pensando?"
       />
-      <button onClick={handleCreatePost}>Publicar</button>
+      <button onClick={handleCreatePost}
+      style={{
+        padding: "12px 24px",
+        backgroundColor: "#1976D2", // Azul mais forte
+        color: "white",
+        border: "none",
+        borderRadius: "8px",
+        cursor: "pointer",
+        fontWeight: "bold",
+        fontSize: "16px",
+        marginLeft: "10px",
+        transition: "all 0.3s ease",
+        boxShadow: "0 4px 8px rgba(25, 118, 210, 0.3)"
+      }}
+      onMouseOver={(e) => {
+        e.target.style.backgroundColor = "#1565C0";
+        e.target.style.transform = "translateY(-2px)";
+        e.target.style.boxShadow = "0 6px 12px rgba(25, 118, 210, 0.4)";
+      }}
+      onMouseOut={(e) => {
+        e.target.style.backgroundColor = "#1976D2";
+        e.target.style.transform = "translateY(0)";
+        e.target.style.boxShadow = "0 4px 8px rgba(25, 118, 210, 0.3)";
+      }}>Publicar
+      </button>
 
       <h3>Feed</h3>
       {posts.map((p) => (
-        <div key={p.id} style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}>
+         <div key={p.id} style={{ 
+          border: "1px solid #E3F2FD", 
+          margin: "10px", 
+          padding: "15px",
+          backgroundColor: "#E3F2FD",
+          borderRadius: "12px",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.08)"
+        }}>
           {editingPostId === p.id ? (
             <div>
               <input
                 value={editingText}
                 onChange={(e) => setEditingText(e.target.value)}
               />
-              <button onClick={() => handleSaveEdit(p.id)}>Salvar</button>
-              <button onClick={() => setEditingPostId(null)}>Cancelar</button>
+              <button onClick={() => handleSaveEdit(p.id)}
+                style={{
+                  padding: "6px 12px",
+                  backgroundColor: "#E8F5E9", 
+                  color: "#2E7D32",           
+                  border: "1px solid #C8E6C9",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                  marginRight: "8px",
+                  transition: "all 0.2s ease"
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.backgroundColor = "#C8E6C9";
+                  e.target.style.transform = "scale(1.05)";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.backgroundColor = "#E8F5E9";
+                  e.target.style.transform = "scale(1)";
+                }}>Salvar
+              </button>
+              <button onClick={() => setEditingPostId(null)} style={{
+                padding: "6px 12px",
+                backgroundColor: "#FFEBEE", // Vermelho bem leve
+                color: "#C62828",           // Texto vermelho escuro
+                border: "1px solid #FFCDD2",
+                borderRadius: "6px",
+                cursor: "pointer",
+                transition: "all 0.2s ease"
+              }}
+              onMouseOver={(e) => {
+                e.target.style.backgroundColor = "#FFCDD2";
+                e.target.style.transform = "scale(1.05)";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.backgroundColor = "#FFEBEE";
+                e.target.style.transform = "scale(1)";
+              }}>Cancelar
+              </button>
             </div>
           ) : (
             <p>
@@ -259,10 +537,45 @@ const FeedPage = ({ user, posts, onCreatePost, onEditPost, onDeletePost, onNavig
                   setEditingPostId(p.id);
                   setEditingText(p.description);
                 }}
+                style={{
+                  padding: "6px 12px",
+                  backgroundColor: "#E8F5E9", 
+                  color: "#2E7D32",           
+                  border: "1px solid #C8E6C9",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                  marginRight: "8px",
+                  transition: "all 0.2s ease"
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.backgroundColor = "#C8E6C9";
+                  e.target.style.transform = "scale(1.05)";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.backgroundColor = "#E8F5E9";
+                  e.target.style.transform = "scale(1)";
+                }}
               >
                 Editar
               </button>
-              <button onClick={() => onDeletePost(p.id)}>Excluir</button>
+              <button onClick={() => onDeletePost(p.id)}
+                style={{
+                padding: "6px 12px",
+                backgroundColor: "#FFEBEE",
+                color: "#C62828",           
+                border: "1px solid #FFCDD2",
+                borderRadius: "6px",
+                cursor: "pointer",
+                transition: "all 0.2s ease"
+              }}
+              onMouseOver={(e) => {
+                e.target.style.backgroundColor = "#FFCDD2";
+                e.target.style.transform = "scale(1.05)";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.backgroundColor = "#FFEBEE";
+                e.target.style.transform = "scale(1)";
+              }}>Excluir</button>
             </div>
           )}
         </div>
